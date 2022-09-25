@@ -1,0 +1,12 @@
+
+@host = https://localhost:7231
+
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+      
+     "email":"test@eml.com",
+     "password": "Password1"
+}
+

@@ -1,0 +1,21 @@
+
+@host = https://localhost:7231
+
+POST {{host}}/deal/add
+Content-Type: application/json
+
+{
+      
+     "id":1,
+     "name": "Password1",
+     "description":"Description",
+     "objection": "Objection"
+}
+
+GET {{host}}/deal/deals
+Content-Type: application/json
+
+{
+}
+ 
+
