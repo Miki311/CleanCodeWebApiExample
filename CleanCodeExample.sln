@@ -15,9 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanCodeExample.Contracts"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{EC958B41-523B-4E33-9274-330BE486F7A5}"
 	ProjectSection(SolutionItems) = preProject
-		Deal.http = Deal.http
 		Requests\Authentication\Login.http = Requests\Authentication\Login.http
 		Requests\Authentication\Register.http = Requests\Authentication\Register.http
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deal", "Deal", "{48B27691-932C-482F-B76A-37346DDDF424}"
+	ProjectSection(SolutionItems) = preProject
+		Deal.http = Deal.http
 	EndProjectSection
 EndProject
 Global
@@ -49,6 +53,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{48B27691-932C-482F-B76A-37346DDDF424} = {EC958B41-523B-4E33-9274-330BE486F7A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0BDB998E-FAE7-4F6A-9849-C014DD7954CD}

@@ -1,7 +1,6 @@
 
 @host = https://localhost:7231
 
-POST {{host}}/deal-management/deals
 Content-Type: application/json
 
 {

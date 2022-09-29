@@ -65,7 +65,18 @@ namespace CleanCodeExample.Api.Common.Errors
             string? detail = null, 
             string? instance = null)
         {
-            throw new NotImplementedException();
+            var validationProblemDetails = new ValidationProblemDetails
+            {
+                Status = statusCode,
+                Title = title,
+                Type = type,
+                Detail = detail,
+                Instance = instance,
+            };
+
+          
+
+            return validationProblemDetails;
         }
     }
 }
