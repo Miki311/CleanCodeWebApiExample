@@ -1,7 +1,7 @@
 
 @host = https://localhost:7231
 
-POST {{host}}/deal/add
+POST {{host}}/deal-management/deals
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
      "objection": "Objection"
 }
 
-GET {{host}}/deal/deals
+GET {{host}}/deal-managemen/deals
 Content-Type: application/json
 
 {
