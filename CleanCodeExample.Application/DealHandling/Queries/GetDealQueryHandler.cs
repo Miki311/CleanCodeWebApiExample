@@ -22,7 +22,7 @@ namespace CleanCodeExample.Application.DealHandling.Queries
 
         public async Task<ErrorOr<DealResponseResult>> Handle(GetDealQuery command, CancellationToken cancellationToken)
         {
-            var response = await _dealRepository.GetDealByIdAsync(command.Id);
+            var response = await _dealRepository.GetDealByNameAsync(command.Name);
           
             //validate deal
             if (response is null)

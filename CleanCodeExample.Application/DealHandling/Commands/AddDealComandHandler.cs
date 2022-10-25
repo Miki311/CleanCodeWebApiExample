@@ -25,7 +25,7 @@ namespace CleanCodeExample.Application.DealHandling.Commands
             //await Task.CompletedTask;
             
             //validate deal
-            if(_dealRepository.GetDealByIdAsync(command.Id) is not null)
+            if(_dealRepository.GetDealByNameAsync(command.Name) is not null)
             {
                 return Errors.Deal.AlreadyExists;
             }

@@ -1,12 +1,13 @@
 
 @host = https://localhost:7231
 
+POST {{host}}/deal-managemen/deals
 Content-Type: application/json
 
 {
       
      "id":1,
-     "name": "Password1",
+     "name": "Pawwssword1",
      "description":"Description",
      "objection": "Objection"
 }

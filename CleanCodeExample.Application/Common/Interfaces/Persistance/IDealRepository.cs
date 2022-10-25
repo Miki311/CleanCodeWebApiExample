@@ -11,7 +11,7 @@ namespace CleanCodeExample.Application.Common.Interfaces.Persistance
     public interface IDealRepository 
     {
         Task<List<Deal>> GetDealsAsync();
-        Task<Deal> GetDealByIdAsync(int id);
+        Task<Deal> GetDealByNameAsync(string name);
 
         Task<int> AddDealAsync(Deal deal);
         Task SaveAsync();

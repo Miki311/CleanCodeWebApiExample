@@ -24,9 +24,9 @@ public class DealQueryService : IDealQueryService
     }
 
 
-    public async Task<ErrorOr<DealResponse>>  GetDealByIdAsync(int id)
+    public async Task<ErrorOr<DealResponse>> GetDealByNameAsync(string name)
     {
-        var deal = await _dealRepository.GetDealByIdAsync(id);
+        var deal = await _dealRepository.GetDealByNameAsync(name);
         if(deal == null)
         {
             return Errors.Deal.NotFound;

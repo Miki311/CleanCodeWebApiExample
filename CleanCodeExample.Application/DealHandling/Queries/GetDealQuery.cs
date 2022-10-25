@@ -11,11 +11,13 @@ namespace CleanCodeExample.Application.DealHandling.Queries
 {
     public class GetDealQuery : IRequest<ErrorOr<DealResponseResult>>
     {
-        public GetDealQuery(int id)
+        public GetDealQuery(int id, string name)
         {
             Id = id;
+            Name = Name;
         }
 
         public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

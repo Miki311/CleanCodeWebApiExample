@@ -12,7 +12,7 @@ namespace CleanCodeExample.Application.DealHandling.Queries
     {
         public GetDealQueryValidator()
         {
-            RuleFor(x => x.Id).NotEmpty();
+            RuleFor(x => x.Name).NotEmpty();
         }
     }
 }

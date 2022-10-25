@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using CleanCodeExample.Infrastructure.Contexts;
 using CleanCodeExample.Application.Common.Interfaces.Persistance;
 using CleanCodeExample.Infrastructure.Persistance;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CleanCodeExample.Infrastructure;
 
@@ -21,7 +22,18 @@ public static class DependencyInjection{
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName));
         services.AddSingleton<IJwtTokenGenereator, JwtTokenGenereator>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
+
         services.AddScoped<IDealRepository, DealRepository>();
+        services.Decorate<IDealRepository, CachedDealRepository>(); //use Scrutor
+        //services.AddScoped<DealRepository>();
+        //services.AddScoped<IDealRepository, CachedDealRepository>();
+        //services.AddScoped<IDealRepository>(provider =>
+        //{
+        //    var dealRepository = provider.GetRequiredService<DealRepository>();
+        //    return new CachedDealRepository(
+        //        dealRepository,
+        //        provider.GetService<IMemoryCache>()!);
+        //});
 
         services.ConfigureOptions<DatabaseOptionsSetup>();
 

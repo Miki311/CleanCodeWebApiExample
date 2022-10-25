@@ -26,9 +26,9 @@ namespace CleanCodeExample.Infrastructure.Persistance
             //return Task.FromResult(new List<Deal>());
         }
 
-        public async Task<Deal> GetDealByIdAsync(int id)
+        public async Task<Deal> GetDealByNameAsync(string name)
         {
-            Task<Deal?> task = _dbContext.Deals.Where(b => b.Id.Equals(id)).FirstOrDefaultAsync();
+            Task<Deal?> task = _dbContext.Deals.Where(b => b.Name.Equals(name)).FirstOrDefaultAsync();
             return await task;
             //return Task.FromResult(new Deal());
         }

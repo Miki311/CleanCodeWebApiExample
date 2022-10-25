@@ -16,7 +16,7 @@ namespace CleanCodeExample.Api.Mapping
                 .Map(dest => dest.Objection, src => src.Objection);
 
             config.NewConfig<DealRequest, GetDealQuery>()
-                .Map(dest => dest.Id, src => src.Id);
+                .Map(dest => dest.Name, src => src.Name);
                
             config.NewConfig<DealResponseResult, DealResponse>()
                 .Map(dest => dest.Id, src => src.Id)

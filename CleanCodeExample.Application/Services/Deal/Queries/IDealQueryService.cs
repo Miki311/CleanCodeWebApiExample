@@ -9,6 +9,6 @@ namespace CleanCodeExample.Application.Services.Deal.Queries;
 public interface IDealQueryService
 {
     Task<ErrorOr<List<DealResponse>>> GetDealsAsync();
-    Task<ErrorOr<DealResponse>> GetDealByIdAsync (int id);
+    Task<ErrorOr<DealResponse>> GetDealByNameAsync (string name);
   
 }
