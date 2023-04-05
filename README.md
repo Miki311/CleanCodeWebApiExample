@@ -1,1 +1,1 @@
-# CleanCodeExample - MediatR
+# CleanCodeExample
