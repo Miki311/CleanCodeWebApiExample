@@ -1,12 +1,15 @@
 using CleanCodeExample.Api;
 using CleanCodeExample.Api.Common.Errors;
 using CleanCodeExample.Api.Filters;
+using CleanCodeExample.Api.HealthChecks;
 using CleanCodeExample.Api.Middleware;
 using CleanCodeExample.Application;
 using CleanCodeExample.Application.Services.Authentication;
 using CleanCodeExample.Infrastructure;
+using HealthChecks.UI.Client;
 using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
@@ -32,7 +35,19 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Register MediatR services
 
+
+//Add HealthCheck service
+builder.Services.AddHealthChecks();
+builder.Services.AddHealthChecksUI().AddInMemoryStorage();
+
+
+builder.Services.AddHealthChecks()
+                 .AddCheck<MyHealthCheck>("MyHealthCheck", tags: new[] { "custom" })
+                .AddSqlServer(builder.Configuration.GetConnectionString("Database"))
+               ;
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -60,5 +75,19 @@ app.UseHttpsRedirection();
 //app.UseAuthorization();
 
 app.MapControllers();
+
+
+//map the endpoint /health to access our Health Checks.
+app.MapHealthChecks("/health", new HealthCheckOptions
+{
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse //This uses the built-in response writer from the Health Checks package
+});
+
+app.MapHealthChecks("/health/custom", new HealthCheckOptions
+{
+    Predicate = reg => reg.Tags.Contains("custom"),
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+app.MapHealthChecksUI();
 
 app.Run();
